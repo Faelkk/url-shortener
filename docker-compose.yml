@@ -1,0 +1,17 @@
+services:
+  url-shortener-back-end:
+    container_name:  url-shortener-back-end
+    build:
+      context: ./backend/url-shortener.Presentation
+      dockerfile: Dockerfile
+      ports:
+      - 5010:5010
+      networks:
+      - minha-rede
+  url-shortener-db:
+
+  url-shortener-front-end:
+
+network: 
+  minha-rede:
+    driver: bridge
