@@ -16,32 +16,34 @@ public class UrlShortenerController : Controller
         this.urlShortenerService = urlShortenerService;
     }
 
-    [HttpGet("{:shortUrlId}")]
-    public IActionResult GetById(string shortUrlId)
+    [HttpGet("{shortUrlId}")]
+    public async Task<IActionResult> GetById(string shortUrlId)
     {
         var urlShortId = new GetByIdShortenerUrlDto { ShortUrl = shortUrlId };
 
-        var createShortenerUrl = urlShortenerService.GetById(urlShortId);
+        var result = await urlShortenerService.GetById(urlShortId);
 
-        return Ok(createShortenerUrl);
+        return Ok(result);
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] CreateShortenerUrlRequest createShortenerUrlDto)
+    public async Task<IActionResult> Post(
+        [FromBody] CreateShortenerUrlRequest createShortenerUrlDto
+    )
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+
         try
         {
             var newCreateShortUrl = new CreateShortenerUrlDto
             {
                 OriginalUrl = createShortenerUrlDto.OriginalUrl,
-                ShortUrl = createShortenerUrlDto.ShortUrl,
             };
 
-            var createShortenerUrl = urlShortenerService.Create(newCreateShortUrl);
+            var result = await urlShortenerService.Create(newCreateShortUrl);
 
-            return Ok(createShortenerUrl);
+            return Ok(result);
         }
         catch (Exception err)
         {
