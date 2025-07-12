@@ -1,17 +1,30 @@
 services:
   url-shortener-back-end:
-    container_name:  url-shortener-back-end
+    container_name: url-shortener-back-end
     build:
-      context: ./backend/url-shortener.Presentation
-      dockerfile: Dockerfile
-      ports:
-      - 5010:5010
-      networks:
+      context: ./back-end
+      dockerfile: url-shortener.Presentation/Dockerfile
+    ports:
+      - "5010:5010"
+    environment:
+      - ConnectionString=Server=url-shortener-db;Database=UrlShortenerDb;User Id=sa;Password=YourStrong!Passw0rd;
+    depends_on:
+      - url-shortener-db
+    networks:
       - minha-rede
+
   url-shortener-db:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: url-shortener-db
+    environment:
+      - SA_PASSWORD=YourStrong!Passw0rd
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    networks:
+      - minha-rede
 
-  url-shortener-front-end:
 
-network: 
+networks: 
   minha-rede:
     driver: bridge
