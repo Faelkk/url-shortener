@@ -1,0 +1,42 @@
+<main class="container">
+  <div class="card">
+    <h1 class="title">Digite uma URL para ser encurtada</h1>
+
+    <form class="example-form" (submit)="submit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Url</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="OriginalUrlForm"
+          placeholder="Ex: https://www.exemplo.com"
+        />
+        @if (OriginalUrlForm.hasError('required')) {
+        <mat-error>Url é <strong>Obrigatória</strong></mat-error>
+        } @else if (OriginalUrlForm.hasError('pattern')) {
+        <mat-error>Digite uma URL válida</mat-error>
+        }
+      </mat-form-field>
+    </form>
+
+    <button
+      class="btn-send"
+      [disabled]="OriginalUrlForm.invalid || isLoading()"
+      (click)="submit()"
+    >
+      Enviar
+    </button>
+
+    <!-- Exibe o link encurtado -->
+    @if (shortUrl()) {
+    <p class="short-url">
+      Link encurtado:
+      <a [href]="shortUrl()" target="_blank">{{ shortUrl() }}</a>
+    </p>
+    <p class="short-url">
+      Url Original:
+      <a [href]="originalUrl()" target="_blank">{{ originalUrl() }}</a>
+    </p>
+    }
+  </div>
+</main>
