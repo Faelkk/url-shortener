@@ -8,8 +8,11 @@ public class DatabaseSeedeer
     public static void ApplyMigrationsAndSeed(IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();
-        var db = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+        var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
 
-        db.Database.Migrate();
+        if (context.Database.IsRelational())
+        {
+            context.Database.Migrate();
+        }
     }
 }

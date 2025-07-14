@@ -50,7 +50,7 @@ public class UrlShortenerService : IUrlShortenerService
         };
     }
 
-    private string GenerateShortCode()
+    public string GenerateShortCode()
     {
         var guid = Guid.NewGuid().ToByteArray();
         var base64 = Convert

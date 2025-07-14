@@ -2,7 +2,7 @@ services:
   url-shortener-back-end:
     container_name: url-shortener-back-end
     build:
-      context: ./back-end
+      context: ./back-end/src
       dockerfile: url-shortener.Presentation/Dockerfile
     ports:
       - "5010:5010"

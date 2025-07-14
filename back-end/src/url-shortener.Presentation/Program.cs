@@ -42,3 +42,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.Run();
+
+namespace url_shortener.Presentation
+{
+    public partial class Program { }
+}
