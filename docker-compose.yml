@@ -24,6 +24,17 @@ services:
     networks:
       - minha-rede
 
+  url-shortener-front-end:
+    container_name: url-shortener-front-end
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+    - "4200:80" 
+    depends_on:
+      - url-shortener-back-end
+    networks:
+      - minha-rede
 
 networks: 
   minha-rede:
