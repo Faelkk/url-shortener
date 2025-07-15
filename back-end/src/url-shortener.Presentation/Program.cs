@@ -24,6 +24,26 @@ builder.Services.AddScoped<IUrlShortenerService, UrlShortenerService>();
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc(
+        "v1",
+        new Microsoft.OpenApi.Models.OpenApiInfo
+        {
+            Title = "URL-Shortener API",
+            Version = "v1",
+            Description = "API desenvolvida para encurtamentos de URL",
+            Contact = new Microsoft.OpenApi.Models.OpenApiContact
+            {
+                Name = "Rafael Achtenberg",
+                Email = "achtenberg.rafa@gmail.com",
+                Url = new Uri("https://github.com/Faelkk"),
+            },
+        }
+    );
+});
+
 var port = builder.Configuration["APIPORT"] ?? "5010";
 builder.WebHost.UseUrls($"http://*:{port}");
 
@@ -36,6 +56,12 @@ app.MapControllers();
 app.UseCors(builder =>
 {
     builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+});
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Library Management API v1");
 });
 
 // Configure the HTTP request pipeline.

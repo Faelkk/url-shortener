@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  title = 'front-end';
   constructor(
     private urlShortenerService: UrlShortenerServiceService,
     private toastService: ToastrService

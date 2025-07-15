@@ -14,7 +14,6 @@ namespace url_shortener.Tests.Services
         [Fact]
         public async Task Create_ShouldReturnShortUrl_WhenOriginalUrlIsValid()
         {
-            // Arrange
             var mockRepo = new Mock<IUrlShortenerRepository>();
             var originalUrl = "https://exemplo.com";
 
@@ -25,10 +24,8 @@ namespace url_shortener.Tests.Services
             var service = new UrlShortenerService(mockRepo.Object);
             var dto = new CreateShortenerUrlDto { OriginalUrl = originalUrl };
 
-            // Act
             var result = await service.Create(dto);
 
-            // Assert
             Assert.Equal(originalUrl, result.OriginalUrl);
             Assert.NotNull(result.ShortUrl);
             Assert.Equal(8, result.ShortUrl.Length);
@@ -37,7 +34,6 @@ namespace url_shortener.Tests.Services
         [Fact]
         public async Task GetById_ShouldReturnOriginalUrl_WhenShortUrlExists()
         {
-            // Arrange
             var mockRepo = new Mock<IUrlShortenerRepository>();
             var shortUrl = "abc12345";
             var originalUrl = "https://google.com";
@@ -49,10 +45,8 @@ namespace url_shortener.Tests.Services
             var service = new UrlShortenerService(mockRepo.Object);
             var dto = new GetByIdShortenerUrlDto { ShortUrl = shortUrl };
 
-            // Act
             var result = await service.GetById(dto);
 
-            // Assert
             Assert.Equal(originalUrl, result.OriginalUrl);
             Assert.Equal(shortUrl, result.ShortUrl);
         }
@@ -60,7 +54,6 @@ namespace url_shortener.Tests.Services
         [Fact]
         public async Task GetById_ShouldThrowException_WhenShortUrlDoesNotExist()
         {
-            // Arrange
             var mockRepo = new Mock<IUrlShortenerRepository>();
             var shortUrl = "inexistente";
 
@@ -69,7 +62,6 @@ namespace url_shortener.Tests.Services
             var service = new UrlShortenerService(mockRepo.Object);
             var dto = new GetByIdShortenerUrlDto { ShortUrl = shortUrl };
 
-            // Act & Assert
             var exception = await Assert.ThrowsAsync<Exception>(() => service.GetById(dto));
             Assert.Equal("URL não encontrada.", exception.Message);
         }

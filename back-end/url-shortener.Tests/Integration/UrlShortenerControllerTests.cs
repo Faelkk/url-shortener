@@ -33,7 +33,6 @@ public class UrlShortenerControllerTests : IClassFixture<CustomWebApplicationFac
     [Fact]
     public async Task GetById_ReturnsOriginalUrl_WhenShortUrlExists()
     {
-        // Arrange: cria primeiro uma shortUrl
         var request = new CreateShortenerUrlRequest { OriginalUrl = "https://example.com" };
 
         var postResponse = await _client.PostAsJsonAsync("/url-shortener", request);
@@ -43,13 +42,11 @@ public class UrlShortenerControllerTests : IClassFixture<CustomWebApplicationFac
         Assert.NotNull(created);
         Assert.NotNull(created!.ShortUrl);
 
-        // Act: faz o GET com a shortUrl criada
         var getResponse = await _client.GetAsync($"/url-shortener/{created.ShortUrl}");
         getResponse.EnsureSuccessStatusCode();
 
         var getResult = await getResponse.Content.ReadFromJsonAsync<GetShortenerUrlResponseDto>();
 
-        // Assert
         Assert.NotNull(getResult);
         Assert.Equal(request.OriginalUrl, getResult!.OriginalUrl);
         Assert.Equal(created.ShortUrl, getResult.ShortUrl);
