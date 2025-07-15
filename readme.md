@@ -35,7 +35,6 @@ Para garantir facilidade de deploy e ambiente padronizado, o projeto está conta
 
 - [.NET](https://dotnet.microsoft.com/pt-br/)
 - [ASP.NET](https://learn.microsoft.com/pt-br/aspnet/core/?view=aspnetcore-9.0&WT.mc_id=dotnet-35129-website)
-- [JWT](https://jwt.io/)
 - [Entity-Framework-Core](https://learn.microsoft.com/en-us/ef/core/)
 - [SqlServer](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
 - [XUnit](https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-csharp-with-xunit)
