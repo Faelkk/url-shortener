@@ -1,6 +1,5 @@
 ## Url-Shortener
 
-## Library management
 
 Aplicação para encurtamento de URLs, com backend em ASP.NET Core (.NET 9) e frontend integrados no mesmo projeto. Suporta criação e consulta de URLs curtas, persistência via SQL Server e banco em memória para testes.
 
