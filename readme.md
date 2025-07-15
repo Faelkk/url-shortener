@@ -45,7 +45,6 @@ Para garantir facilidade de deploy e ambiente padronizado, o projeto está conta
 
 - [Angular 19](https://angular.io/)
 - [Angular Signals](https://angular.dev/features/reactivity)
-- [RxJS](https://rxjs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Scss](https://sass-lang.com/)
 - [Angular Forms (Reactive Forms)](https://angular.io/guide/reactive-forms)
