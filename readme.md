@@ -3,20 +3,6 @@
 
 Aplicação para encurtamento de URLs, com backend em ASP.NET Core (.NET 9) e frontend integrados no mesmo projeto. Suporta criação e consulta de URLs curtas, persistência via SQL Server e banco em memória para testes.
 
-Essa API permite realizar de forma simples e organizada:
-
-- 📚 Cadastro, atualização e exclusão de livros e gêneros.
-
-- 👤 Gerenciamento de usuários com autenticação e autorização via JWT.
-
-- 🔄 Controle completo de empréstimos, devoluções e disponibilidade dos livros.
-
-- 📑 Documentação interativa com Swagger/OpenAPI.
-
-- 🚀 Proteções aplicadas, como Rate Limiting, autenticação e validação robusta.
-
-Com esse sistema, conseguimos reduzir retrabalho, melhorar o controle dos livros disponíveis, ter registros precisos e garantir mais organização na gestão da biblioteca da instituição.
-
 ## Arquitetura
 
 O projeto adota a Clean Architecture, promovendo uma separação clara entre as camadas de domínio, aplicação e infraestrutura.
